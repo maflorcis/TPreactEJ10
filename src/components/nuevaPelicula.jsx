@@ -18,10 +18,10 @@ const stateInicial = {
 class NuevaPelicula extends Component {
     state={  ...stateInicial    }
 
-    // CUANDO EL USUARIO ESCRIBE EN LOS INPUTS
+    // En el momento que se escriben los datos
        handleChange= (e) =>{
            
-           //COLOCAR LO QUE EL USUARIO ESCRIBE EN EL STATE
+           //se pasa al arreglo
 
            this.setState({
                pelicula: {
@@ -32,14 +32,14 @@ class NuevaPelicula extends Component {
 
         }
 
-        // CUANDO EL USUARIO ENVIA EL METODO
+        // Envíamos el formulario
         handleSubmit = e => {
             e.preventDefault();
 
-            //EXTRAER LOS VALORES DEL STATE
+            //los valores van a un arreglo
             const {titulo,genero, fecha, hora, descripcion} = this.state.pelicula;
 
-            //VALIDAR QUE TODOS LOS CAMPOS ESTEN LLENOS
+            //Validamos que no haya nada vacío
 
             if (titulo === '' || genero ==='' || fecha=== '' || hora === '' || descripcion === '' )
             {
@@ -48,19 +48,19 @@ class NuevaPelicula extends Component {
                 })
            
 
-            //DETENER LA EJECUCION
+            //Se detiene
             return;
         }
 
-        // GENERAR OBJETO CON DATOS
+        // NUEVO OBJETO!!!
 
             const nuevaPelicula = {...this.state.pelicula};
             nuevaPelicula.id= uuid();
 
-            //AGREGAR LA CITA AL STATE DE APP
+            //Ya tenemos la nueva peli agregada
             this.props.crearNuevaPelicula(nuevaPelicula) 
 
-            //COLOCAR EN EL STATE EL STATEINICIALv(pra que se reinicie el formulario cada vez que se envia)
+            //Reiniciamos el formulario
             this.setState({
                 ...stateInicial
             })
@@ -70,15 +70,15 @@ class NuevaPelicula extends Component {
 
     render(){
 
-    // EXTRAER VALOR DEL STATE  
+    // Tomamos el valor del state
     
     const {error}= this.state;
 
         return(
             <div className="card mt-5 py-5">
-                <div className="card-body">
-                    <h2 className="card-title text-center mb-5">
-                        Llena el formulario para crear una nueva pelicula
+                <div className="card-body Formulario">
+                    <h2 className="card-title text-center mb-5 display-5">
+                        Llená el formulario para crear una nueva película
                     </h2>
 
                     {error ? <div className="alert alert-danger mt-2 mb-5 text-center"> ¡¡Todos los campos son obligatorios!!</div> : null}
@@ -87,7 +87,7 @@ class NuevaPelicula extends Component {
                         onSubmit={this.handleSubmit}
                     >
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Titulo de la Pelicula</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Titulo de la Pelicula</label>
                             <div className="col-sm-8 col-lg-10">
                                 <input 
                                     type="text"
@@ -102,7 +102,7 @@ class NuevaPelicula extends Component {
 
                         
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Genero</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Genero</label>
                             <div className="col-sm-8 col-lg-10">
                                 <select 
                                     type="text"
@@ -122,7 +122,7 @@ class NuevaPelicula extends Component {
 
 
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Fecha de estreno</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Fecha de estreno</label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="date"
@@ -133,7 +133,7 @@ class NuevaPelicula extends Component {
                                     />
                             </div>
                         
-                            <label className="col-sm-4 col-lg-2 col-form-label">Duración</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Duración</label>
                             <div className="col-sm-8 col-lg-4">
                                 <input 
                                     type="time"
@@ -146,7 +146,7 @@ class NuevaPelicula extends Component {
                         </div>
 
                         <div className="form-group row">
-                            <label className="col-sm-4 col-lg-2 col-form-label">Descripcion</label>
+                            <label className="col-sm-4 col-lg-2 col-form-label my-2">Descripcion</label>
                             <div className="col-sm-8 col-lg-10">
                                 <textarea
                                     type="text"
@@ -159,7 +159,7 @@ class NuevaPelicula extends Component {
                                 </textarea>
                             </div>
                         </div>
-                            <input type="submit" className="py-3 mt-2 btn btn-success btn-block" value="Agregar Nueva Pelicula"/>
+                            <input type="submit" className="py-3 mt-2 btn btn-secondary btn-block" value="Agregar Nueva Pelicula"/>
 
                     </form>
                 </div>

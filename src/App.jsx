@@ -11,7 +11,8 @@ class App extends Component {
 
   }
 
-  //CUANDO LA APLICACION CARGA
+  //En el momento que la aplicación se carga 
+
     componentDidMount(){
       const peliculasLS = localStorage.getItem('peliculas');
       if(peliculasLS){
@@ -21,32 +22,32 @@ class App extends Component {
       }
     }
 
-  // CUANDO ELEMINAMOS O AGREGAMOS UNA NUEVA CITA
+  // Quitamos o agregamos una peli
 
   componentDidUpdate(){
     localStorage.setItem('peliculas', JSON.stringify(this.state.peliculas))
   }
 
   crearNuevaPelicula = datos => {
-    //COPIAR EL STATE ACTUAL
+    
     const peliculas = [...this.state.peliculas, datos]
 
-    // AGREGAR EL NUEVO STATE
+    // Se renderiza el nuevo state
 
     this.setState({
       peliculas: peliculas
     })
   }
 
-    //ELIMINA LAS CITAS DEL STATE
+    //Borramos una peli
       eliminarPelicula = id =>{
-        //HACER UNA COPIA DEL STATE
+        //se copia el state
           const peliculasActuales = [...this.state.peliculas]
 
-        //UTILIZAR FILTER PARA SACAR EL ELEMENTO ID DEL ARRAY
+        //filtramos para borrar la peli elegida
         const peliculas = peliculasActuales.filter(pelicula => pelicula.id !== id);
 
-        //ACTUALIZAR EL STATE
+        //se vuelve a ajustar el state para renderizarlo de nuevo
         this.setState({
           peliculas
         })
@@ -55,9 +56,9 @@ class App extends Component {
 
   render(){
     return (
-      <div className="container">
-        <Header
-        titulo='Administrador de Peliculas'
+      <div className="container Fondo">
+        <Header 
+        titulo='Lista de Películas Preferidas'
         />
         <div className="row">
           <div className="col-md-10 mx-auto">
@@ -66,7 +67,7 @@ class App extends Component {
             />
           </div>
 
-            <div className="mt-5 col-md-10 mx-auto">
+            <div className="mt-5 col-md-10 mx-auto tarjeta">
             <ListaPeliculas
               peliculas={this.state.peliculas}
               eliminarPelicula={this.eliminarPelicula}

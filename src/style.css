@@ -1,2 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 
+.mainTitle{
+    color:white;
+}
+
+.Formulario{
+    background-color: orange;
+}
+
+.tarjeta{
+    background-color: bisque;
+}
+.Fondo{
+    background-color:  rgb(136, 29, 29);
+}
+

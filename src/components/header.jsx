@@ -3,7 +3,7 @@ import React from 'react';
 const Header =({titulo})=>{
     return (
        <header>
-           <h1 className="text-center">{titulo}</h1>
+           <h1 className="text-center display-2 mainTitle">{titulo}</h1>
        </header>
     );
 }

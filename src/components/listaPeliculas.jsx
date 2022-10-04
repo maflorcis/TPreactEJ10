@@ -7,8 +7,8 @@ const ListaPeliculas = ({peliculas, eliminarPelicula})=>{
     return (
        <div className="card mt-2 py-5">
            <div className="card-body">
-               <h2 className="card-tittle text-center">{mensaje}</h2>
-               <div className="lista-peliculas">
+               <h2 className="card-title text-center display-3">{mensaje}</h2>
+               <div className="lista-peliculas text-center">
                    {peliculas.map(pelicula=>(
                         <Pelicula
                         key={pelicula.id}
